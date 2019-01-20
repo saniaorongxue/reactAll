@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input } from "antd";
+import { Icon, Input, Button } from "antd";
 
 class Login extends React.Component {
     constructor(props) {
@@ -27,6 +27,19 @@ class Login extends React.Component {
     onChangePassWord = (e) => {
         this.setState({ password: e.target.value });
     }
+
+    //登录方法
+    handleSubmit = () => {
+        console.log(this.state);
+    }
+
+    handleCancle = () => {
+        this.setState({
+            username: '',
+            password: ''
+        })
+    }
+
 
     render() {
         const { username, password } = this.state;
@@ -58,6 +71,10 @@ class Login extends React.Component {
                         onChange={this.onChangePassWord}
                         ref={node => this.pwdInput = node}
                     />
+                </section>
+                <section>
+                    <Button type="primary" onClick={this.handleSubmit}>登录</Button>
+                    <Button type="" onClick={this.handleCancle}>取消</Button>
                 </section>
             </section>
         );

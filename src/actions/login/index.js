@@ -1,8 +1,9 @@
 const login = {
-    'USER_CHANGE': {
-        type: 'USER_CHANGE'
+    'LOGIN_SUCCESS': {
+        type: 'LOGIN_SUCCESS',
     },
-    'PWD_CHANGE': {
-        type: 'PWD_CHANGE'
+    'LOGIN_OUT': {
+        type: 'LOGIN_OUT',
+        information: {}
     }
 }
