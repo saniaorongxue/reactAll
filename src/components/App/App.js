@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
-import 'antd/'
+import { Button, Icon } from 'antd';
+import Login from '../Login/Login'
+
 class App extends Component {
   render() {
     return (
@@ -8,6 +9,8 @@ class App extends Component {
        App
         <Button type="danger">danger</Button>
         <Button type="primary">danger</Button>
+        <Icon type="radius-setting" />
+        <Login />
       </div>
     );
   }
