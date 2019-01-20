@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input} from "antd";
+import { Icon, Input } from "antd";
 
 class Login extends React.Component {
     constructor(props) {
@@ -7,64 +7,60 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: ''
-        }
+        };
     }
 
-    valueEmpty = (type) => {
-        if(type === 'username') {
-            this.setState({username: ''})
-        }else{
-            this.setState({password: ''})
-        }
+    userEmpty = () => {
+        this.userNameInput.focus();
+        this.setState({ username: '' });
     }
 
-    onChangeUsername = (e) => {
-        this.setState({
-            username: e.target.value
-        });
+    pwdEmpty = () => {
+        this.pwdInput.focus();
+        this.setState({ password: '' });
     }
 
-    onChangePwd = (e) => {
-        this.setState({
-            password: e.target.value
-        })
+    onChangeUserName = (e) => {
+        this.setState({ username: e.target.value });
     }
 
-
+    onChangePassWord = (e) => {
+        this.setState({ password: e.target.value });
+    }
 
     render() {
-        let { username, password } = this.state;
-        const usernameSuf = username ? <Icon type="close-circle" onClick={this.valueEmpty('username')}/> : null;
-        const passwordSuf = password ? <Icon type="close-circle" onClick={this.valueEmpty('password')}/> : null;
+        const { username, password } = this.state;
+        const suffixUser = username ? <Icon type="close-circle" onClick={this.userEmpty} /> : null;
+        const suffixPwd = username ? <Icon type="close-circle" onClick={this.pwdEmpty} /> : null;
         return (
             <section>
-                <section className="logo"></section>
                 <p>
                     <span>{username}</span>
                     <span>{password}</span>
                 </p>
                 <section>
-                   <Input
-                       prefix={<Icon type="user"/>}
-                       value={username}
-                       placeholder="账号"
-                       suffix={usernameSuf}
-                       onChange={this.onChangeUsername}
-                       ref={(node) => {this.userInput = node}}
-                   />
+                    <Input
+                        placeholder="账号"
+                        prefix={<Icon type="user" />}
+                        suffix={suffixUser}
+                        value={username}
+                        onChange={this.onChangeUserName}
+                        ref={node => this.userNameInput = node}
+                    />
                 </section>
                 <section>
                     <Input
-                        prefix={<Icon type="lock"/>}
-                        value={password}
                         placeholder="密码"
-                        suffix={passwordSuf}
-                        onChange={this.onChangePwd}
-                        ref={(node) => {this.pwdInput = node}}
+                        type="password"
+                        prefix={<Icon type="lock" />}
+                        suffix={suffixPwd}
+                        value={password}
+                        onChange={this.onChangePassWord}
+                        ref={node => this.pwdInput = node}
                     />
                 </section>
             </section>
-        )
+        );
     }
 }
 
