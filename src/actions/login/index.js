@@ -4,6 +4,6 @@ const login = {
     },
     'LOGIN_OUT': {
         type: 'LOGIN_OUT',
-        information: {}
+        userInfomation: {}
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, Input, Button } from "antd";
+import { Icon, Input } from "antd";
+import SubmitBtn from '../../containers/login/SubmitBtn';
 
 class Login extends React.Component {
     constructor(props) {
@@ -28,11 +29,11 @@ class Login extends React.Component {
         this.setState({ password: e.target.value });
     }
 
-    //登录方法
-    handleSubmit = () => {
-        console.log(this.state);
-    }
-
+    // //登录方法
+    // handleSubmit = () => {
+    //     console.log(this.state);
+    // }
+    //
     handleCancle = () => {
         this.setState({
             username: '',
@@ -44,7 +45,7 @@ class Login extends React.Component {
     render() {
         const { username, password } = this.state;
         const suffixUser = username ? <Icon type="close-circle" onClick={this.userEmpty} /> : null;
-        const suffixPwd = username ? <Icon type="close-circle" onClick={this.pwdEmpty} /> : null;
+        const suffixPwd = password ? <Icon type="close-circle" onClick={this.pwdEmpty} /> : null;
         return (
             <section>
                 <p>
@@ -72,10 +73,7 @@ class Login extends React.Component {
                         ref={node => this.pwdInput = node}
                     />
                 </section>
-                <section>
-                    <Button type="primary" onClick={this.handleSubmit}>登录</Button>
-                    <Button type="" onClick={this.handleCancle}>取消</Button>
-                </section>
+                <SubmitBtn info={this.state} handleOther={this.handleCancle}/>
             </section>
         );
     }
