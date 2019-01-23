@@ -14,7 +14,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         handleSubmit: (data) => {
             dispatch({type: 'LOGIN_SUCCESS', userInfomation: data});
-            // history.push('/main');
+            history.push('/main');
         }
     }
 }
